@@ -2,74 +2,73 @@
 
 /**
  **_strncpy - copies a string
- *@dest: the destination string to be copied to
- *@src: the source string
- *@n: the amount of characters to be copied
+ *@dst: the destination string to be copied to
+ *@scr: the source string
+ *@b: the amount of characters to be copied
  *Return: the concatenated string
  */
-char *_strncpy(char *dest, char *src, int n)
+char *_strncpy(char *dst, char *scr, int b)
 {
-	int i, j;
-	char *s = dest;
+	int k, n;
+	char *u = dst;
 
-	i = 0;
-	while (src[i] != '\0' && i < n - 1)
+	k = 0;
+	while (scr[k] != '\0' && k < b - 1)
 	{
-		dest[i] = src[i];
-		i++;
+		dst[k] = scr[k];
+		k++;
 	}
-	if (i < n)
+	if (k < b)
 	{
-		j = i;
-		while (j < n)
+		n = k;
+		while (n < b)
 		{
-			dest[j] = '\0';
-			j++;
+			dst[n] = '\0';
+			n++;
 		}
 	}
-	return (s);
+	return (u);
 }
 
 /**
  **_strncat - concatenates two strings
- *@dest: the first string
- *@src: the second string
- *@n: the amount of bytes to be maximally used
+ *@dst: the first string
+ *@scr: the second string
+ *@b: the amount of bytes to be maximally used
  *Return: the concatenated string
  */
-char *_strncat(char *dest, char *src, int n)
+char *_strncat(char *dst, char *scr, int b)
 {
-	int i, j;
-	char *s = dest;
+	int k, n;
+	char *u = dst;
 
-	i = 0;
-	j = 0;
-	while (dest[i] != '\0')
-		i++;
-	while (src[j] != '\0' && j < n)
+	k = 0;
+	n = 0;
+	while (dst[k] != '\0')
+		k++;
+	while (scr[n] != '\0' && n < b)
 	{
-		dest[i] = src[j];
-		i++;
-		j++;
+		dst[k] = scr[n];
+		k++;
+		n++;
 	}
-	if (j < n)
-		dest[i] = '\0';
-	return (s);
+	if (n < b)
+		dst[k] = '\0';
+	return (u);
 }
 
 /**
  **_strchr - locates a character in a string
- *@s: the string to be parsed
+ *@u: the string to be parsed
  *@c: the character to look for
- *Return: (s) a pointer to the memory area s
+ *Return: (u) a pointer to the memory area u
  */
-char *_strchr(char *s, char c)
+char *_strchr(char *u, char c)
 {
 	do {
-		if (*s == c)
-			return (s);
-	} while (*s++ != '\0');
+		if (*u == c)
+			return (u);
+	} while (*u++ != '\0');
 
 	return (NULL);
 }
-
