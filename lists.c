@@ -1,4 +1,4 @@
-#include"shell.q"
+#include "shell.h"
 
 /**
  * add_node - adds a node to the start of the list
@@ -76,19 +76,19 @@ list_t *add_node_end(list_t **header, const char *str, int num)
 
 /**
  * print_list_str - prints only the str element of a list_t linked list
- * @q: pointer to first node
+ * @h: pointer to first node
  *
  * Return: size of list
  */
-size_t print_list_str(const list_t *q)
+size_t print_list_str(const list_t *h)
 {
 	size_t m = 0;
 
-	while (q)
+	while (h)
 	{
-		_puts(q->str ? q->str : "(nil)");
+		_puts(h->str ? h->str : "(nil)");
 		_puts("\n");
-		q = q->next;
+		h = h->next;
 		m++;
 	}
 	return (m);
