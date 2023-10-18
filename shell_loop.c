@@ -3,25 +3,25 @@
 /**
  * hsh - main shell loop
  * @info: the parameter & return info struct
- * @av: the argument vector from main()
+ * @arv: the argument vector from main()
  *
  * Return: 0 on success, 1 on error, or error code
  */
-int hsh(info_t *info, char **av)
+int hsh(info_t *info, char **arv)
 {
-	ssize_t p = 0;
+	ssize_t s = 0;
 	int builtin_ret = 0;
 
-	while (p != -1 && builtin_ret != -2)
+	while (s != -1 && builtin_ret != -2)
 	{
 		clear_info(info);
 		if (interactive(info))
-			_puts("╰═┅═━–〈MasterGale ┈➤ ");
+			_puts("╰═┅═━–〈HEZKEN ┈➤ ");
 		_eputchar(BUF_FLUSH);
-		p = get_input(info);
-		if (p != -1)
+		s = get_input(info);
+		if (s != -1)
 		{
-			set_info(info, av);
+			set_info(info, arv);
 			builtin_ret = find_builtin(info);
 			if (builtin_ret == -1)
 				find_cmd(info);
@@ -54,7 +54,7 @@ int hsh(info_t *info, char **av)
  */
 int find_builtin(info_t *info)
 {
-	int m, built_in_ret = -1;
+	int o, built_in_ret = -1;
 	builtin_table builtintbl[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
@@ -67,11 +67,11 @@ int find_builtin(info_t *info)
 		{NULL, NULL}
 	};
 
-	for (m = 0; builtintbl[m].type; m++)
-		if (_strcmp(info->argv[0], builtintbl[m].type) == 0)
+	for (o = 0; builtintbl[o].type; o++)
+		if (_strcmp(info->argv[0], builtintbl[o].type) == 0)
 		{
 			info->line_count++;
-			built_in_ret = builtintbl[m].func(info);
+			built_in_ret = builtintbl[o].func(info);
 			break;
 		}
 	return (built_in_ret);
@@ -86,7 +86,7 @@ int find_builtin(info_t *info)
 void find_cmd(info_t *info)
 {
 	char *path = NULL;
-	int m, k, i;
+	int o, q;
 
 	info->path = info->argv[0];
 	if (info->linecount_flag == 1)
@@ -94,10 +94,10 @@ void find_cmd(info_t *info)
 		info->line_count++;
 		info->linecount_flag = 0;
 	}
-	for (m = 0, k = 0; info->arg[i]; m++)
-		if (!is_delim(info->arg[i], " \t\n"))
-			k++;
-	if (!k)
+	for (o = 0, q = 0; info->arg[o]; o++)
+		if (!is_delim(info->arg[o], " \t\n"))
+			q++;
+	if (!q)
 		return;
 
 	path = find_path(info, _getenv(info, "PATH="), info->argv[0]);

@@ -2,64 +2,64 @@
 
 /**
  * _strcpy - copies a string
- * @dest: the destination
- * @src: the source
+ * @des: the destination
+ * @sc: the source
  *
  * Return: pointer to destination
  */
-char *_strcpy(char *dest, char *src)
+char *_strcpy(char *des, char *sc)
 {
 	int d = 0;
 
-	if (dest == src || src == 0)
-		return (dest);
-	while (src[d])
+	if (des == sc || sc == 0)
+		return (des);
+	while (sc[d])
 	{
-		dest[d] = src[d];
+		des[d] = sc[d];
 		d++;
 	}
-	dest[d] = 0;
-	return (dest);
+	des[d] = 0;
+	return (des);
 }
 
 /**
  * _strdup - duplicates a string
- * @str: the string to duplicate
+ * @st: the string to duplicate
  *
  * Return: pointer to the duplicated string
  */
-char *_strdup(const char *str)
+char *_strdup(const char *st)
 {
 	int length = 0;
 	char *ret;
 
-	if (str == NULL)
+	if (st == NULL)
 		return (NULL);
-	while (*str++)
+	while (*st++)
 		length++;
 	ret = malloc(sizeof(char) * (length + 1));
 	if (!ret)
 		return (NULL);
 	for (length++; length--;)
-		ret[length] = *--str;
+		ret[length] = *--st;
 	return (ret);
 }
 
 /**
  *_puts - prints an input string
- *@str: the string to be printed
+ *@st: the string to be printed
  *
  * Return: Nothing
  */
-void _puts(char *str)
+void _puts(char *st)
 {
 	int d = 0;
 
-	if (!str)
+	if (!st)
 		return;
-	while (str[d] != '\0')
+	while (st[d] != '\0')
 	{
-		_putchar(str[d]);
+		_putchar(st[d]);
 		d++;
 	}
 }

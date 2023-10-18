@@ -2,42 +2,42 @@
 
 /**
  * _strlen - returns the length of a string
- * @s: the string whose length to check
+ * @b: the string whose length to check
  *
  * Return: integer length of string
  */
-int _strlen(char *s)
+int _strlen(char *b)
 {
-	int i = 0;
+	int v = 0;
 
-	if (!s)
+	if (!b)
 		return (0);
 
-	while (*s++)
-		i++;
-	return (i);
+	while (*b++)
+		v++;
+	return (v);
 }
 
 /**
  * _strcmp - performs lexicogarphic comparison of two strangs.
- * @s1: the first strang
- * @s2: the second strang
+ * @m1: the first strang
+ * @m2: the second strang
  *
- * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
+ * Return: negative if m1 < m2, positive if m1 > m2, zero if m1 == m2
  */
-int _strcmp(char *s1, char *s2)
+int _strcmp(char *m1, char *m2)
 {
-	while (*s1 && *s2)
+	while (*m1 && *m2)
 	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
-		s1++;
-		s2++;
+		if (*m1 != *m2)
+			return (*m1 - *m2);
+		m1++;
+		m2++;
 	}
-	if (*s1 == *s2)
+	if (*m1 == *m2)
 		return (0);
 	else
-		return (*s1 < *s2 ? -1 : 1);
+		return (*m1 < *m2 ? -1 : 1);
 }
 
 /**
