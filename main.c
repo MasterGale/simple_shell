@@ -10,7 +10,7 @@
 int main(int ac, char **av)
 {
 	info_t info[] = { INFO_INIT };
-	int k = 2;
+	int k = 2, fd;
 
 	asm ("mov %1, %0\n\t"
 		"add $3, %0"
@@ -35,7 +35,7 @@ int main(int ac, char **av)
 			}
 			return (EXIT_FAILURE);
 		}
-		info->readk = k;
+		info->readfd = k;
 	}
 	populate_env_list(info);
 	read_history(info);
